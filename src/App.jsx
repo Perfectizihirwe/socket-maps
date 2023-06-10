@@ -8,6 +8,11 @@ const containerStyle = {
   height: '500px'
 };
 
+const center = {
+  lat: -3.745,
+  lng: -38.523
+};
+
 function App() {
   console.log("hello")
   const { isLoaded } = useJsApiLoader({
@@ -28,7 +33,10 @@ function App() {
   const [map, setMap] = useState(null)
 
   const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
+    const bounds = new window.google.maps.LatLngBounds({
+      lat: coords?.latitude || -1.982464,
+      lng: coords?.longitude || 30.097408
+    });
     map.fitBounds(bounds);
     setMap(map)
   }, [])
